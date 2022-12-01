@@ -1,5 +1,3 @@
-// const fs = require('fs/promises')
-
 const path = require("path");
 const fs = require("fs/promises");
 
@@ -26,7 +24,6 @@ const addContact = async ({ name, email, phone }) => {
     phone,
   };
   contacts.push(newContact);
-  // await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
   return newContact;
 };
@@ -46,7 +43,6 @@ const updateContact = async (contactId, { name, email, phone }) => {
     return { message: "Not found" };
   }
   contacts[contactsIndex] = { id: contactId, name, email, phone };
-  // await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
   return contacts[contactsIndex];
 };
