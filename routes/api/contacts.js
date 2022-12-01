@@ -1,8 +1,15 @@
 const express = require("express");
+const Joi = require("joi");
 
 const contacts = require("../../models/contacts");
 
 const router = express.Router();
+
+const addObjData = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().required(),
+  phone: Joi.string().required(),
+});
 
 router.get("/", async (req, res, next) => {
   try {
@@ -21,7 +28,7 @@ router.get("/:contactId", async (req, res, next) => {
       .join("");
     const result = await contacts.getContactById(contactIdNormalize);
     if (!result) {
-      throw console.error("Not found");
+      throw new Error("Not found");
     }
     res.json(result);
   } catch (error) {
@@ -30,7 +37,16 @@ router.get("/:contactId", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const { error } = addObjData.validate(req.query);
+    if (error) {
+      throw new Error("missing required name field");
+    }
+    const result = await contacts.addContact(req.query);
+    res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete("/:contactId", async (req, res, next) => {
