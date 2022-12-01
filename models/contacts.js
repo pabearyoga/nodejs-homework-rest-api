@@ -34,7 +34,9 @@ const addContact = async ({ name, email, phone }) => {
 const removeContact = async (contactId) => {
   const contacts = await listContacts();
   const contactDelete = contacts.filter((el) => el.id !== contactId);
+
   await fs.writeFile(contactsPath, JSON.stringify(contactDelete));
+  return { message: "Contact deleted" };
 };
 
 const updateContact = async (contactId, { name, email, phone }) => {
