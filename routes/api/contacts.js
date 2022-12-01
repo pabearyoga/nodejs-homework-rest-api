@@ -23,10 +23,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:contactId", async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    const contactIdNormalize = [...contactId]
-      .slice(1, [...contactId].length)
-      .join("");
-    const result = await contacts.getContactById(contactIdNormalize);
+    const result = await contacts.getContactById(contactId);
     if (!result) {
       throw new Error("Not found");
     }
@@ -50,7 +47,16 @@ router.post("/", async (req, res, next) => {
 });
 
 router.delete("/:contactId", async (req, res, next) => {
-  res.json({ message: "template message" });
+  try {
+    const { contactId } = req.params;
+    const result = await contacts.removeContact(contactId);
+    if (result === null) {
+      throw new Error("Not found");
+    }
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.put("/:contactId", async (req, res, next) => {
