@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:contactId", async (req, res, next) => {
   try {
-    const { contactId } = req.params;
+    const { contactId } = req.params.contactId;
     const result = await contacts.getContactById(contactId);
     if (!result) {
       throw new Error("Not found");
@@ -48,7 +48,7 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:contactId", async (req, res, next) => {
   try {
-    const { contactId } = req.params;
+    const { contactId } = req.params.contactId;
     const result = await contacts.removeContact(contactId);
     if (result === null) {
       throw new Error("Not found");
@@ -62,7 +62,7 @@ router.delete("/:contactId", async (req, res, next) => {
 router.put("/:contactId", async (req, res, next) => {
   try {
     const { error } = addObjData.validate(req.query);
-    const { contactId } = req.params;
+    const { contactId } = req.params.contactId;
     const result = await contacts.updateContact(contactId, req.query);
     if (error) {
       throw new Error("missing fields");
