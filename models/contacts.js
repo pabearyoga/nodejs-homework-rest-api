@@ -31,6 +31,10 @@ const addContact = async ({ name, email, phone }) => {
 const removeContact = async (contactId) => {
   const contacts = await listContacts();
   const contactDelete = contacts.filter((el) => el.id !== contactId);
+  const index = contacts.findIndex((item) => item.id === contactId);
+  if (index === -1) {
+    return null;
+  }
 
   await fs.writeFile(contactsPath, JSON.stringify(contactDelete));
   return { message: "Contact deleted" };
