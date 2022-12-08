@@ -13,6 +13,8 @@ router.post("/", ctrl.addContact);
 
 router.put("/:contactId", contactIdParamValidation, ctrl.updateContact);
 
+router.patch("/:contactId", contactIdParamValidation, ctrl.updateStatusContact);
+
 router.delete("/:contactId", contactIdParamValidation, ctrl.deleteContact);
 
 module.exports = router;
