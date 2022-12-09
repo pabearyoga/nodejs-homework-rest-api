@@ -1,29 +1,27 @@
 const express = require("express");
 const ctrl = require("../../controllers/contacts");
 const router = express.Router();
-const middlewares = require("../../middlewares");
+const mdlwrs = require("../../middlewares");
 
 router.get("/", ctrl.getAll);
 
-router.get("/:contactId", middlewares.contactIdParamValidation, ctrl.getById);
+router.get("/:contactId", mdlwrs.contactIdParamValidation, ctrl.getById);
 
-router.post("/", middlewares.addContactValidation, ctrl.addContact);
+router.post("/", mdlwrs.addContactValidation, ctrl.addContact);
 
-router.put(
-  "/:contactId",
-  middlewares.contactIdParamValidation,
-  ctrl.updateContact
-);
+router.put("/:contactId", mdlwrs.contactIdParamValidation, ctrl.updateContact);
 
 router.patch(
   "/:contactId",
-  middlewares.contactIdParamValidation,
+  mdlwrs.objIsEmptyValid,
+  mdlwrs.updateStatusContactValid,
+  mdlwrs.contactIdParamValidation,
   ctrl.updateStatusContact
 );
 
 router.delete(
   "/:contactId",
-  middlewares.contactIdParamValidation,
+  mdlwrs.contactIdParamValidation,
   ctrl.deleteContact
 );
 
