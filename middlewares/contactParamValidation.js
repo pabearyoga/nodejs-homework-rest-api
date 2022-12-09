@@ -10,4 +10,4 @@ const contactIdParamValidation = (req, res, next) => {
   next();
 };
 
-module.exports = { contactIdParamValidation };
+module.exports = contactIdParamValidation;
