@@ -1,5 +1,5 @@
 const contactIdParamValidation = require("./contactParamValidation");
-const addContactValidation = require("./addContaactValid");
+const addContactValidation = require("./addContactValid");
 const objIsEmptyValid = require("./objIsEmptyValid");
 const updateStatusContactValid = require("./updateStatusContactValid");
 
