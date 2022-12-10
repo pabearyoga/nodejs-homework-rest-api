@@ -1,13 +1,13 @@
 const contactIdParamValidation = (req, res, next) => {
   const { contactId } = req.params;
 
-  if (!Number(contactId)) {
+  if (!String(contactId)) {
     return res.status(400).json({
-      message: 'Incorrect "cotactId", pleace input number !',
+      message: 'Incorrect "cotactId", pleace input string !',
     });
   }
 
   next();
 };
 
-module.exports = { contactIdParamValidation };
+module.exports = contactIdParamValidation;
