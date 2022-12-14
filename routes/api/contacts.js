@@ -1,7 +1,8 @@
 const express = require("express");
-const ctrl = require("../../controllers/contacts");
+const { contacts: ctrl } = require("../../controllers/");
+const { contacts: mdlwrs } = require("../../middlewares/");
+// const mdlwrs = require("../../middlewares");
 const router = express.Router();
-const mdlwrs = require("../../middlewares");
 
 router.get("/", ctrl.getAll);
 
