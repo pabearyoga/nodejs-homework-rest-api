@@ -8,10 +8,11 @@ const updateContact = async (req, res, next) => {
     if (error) {
       throw HttpError(400, error.message);
     }
+    const { _id } = req.user;
     const { contactId } = req.params;
     const result = await Contact.findByIdAndUpdate(
       { _id: contactId },
-      req.body,
+      { ...req.body, owner: _id },
       {
         new: true,
       }

@@ -1,19 +1,35 @@
 const express = require("express");
 const { contacts: ctrl } = require("../../controllers/");
 const { contacts: mdlwrs } = require("../../middlewares/");
-// const mdlwrs = require("../../middlewares");
+const { register: mdlwrsUsers } = require("../../middlewares/");
 const router = express.Router();
 
-router.get("/", ctrl.getAll);
+router.get("/", mdlwrsUsers.auth, ctrl.getAll);
 
-router.get("/:contactId", mdlwrs.contactIdParamValidation, ctrl.getById);
+router.get(
+  "/:contactId",
+  mdlwrsUsers.auth,
+  mdlwrs.contactIdParamValidation,
+  ctrl.getById
+);
 
-router.post("/", mdlwrs.addContactValidation, ctrl.addContact);
+router.post(
+  "/",
+  mdlwrsUsers.auth,
+  mdlwrs.addContactValidation,
+  ctrl.addContact
+);
 
-router.put("/:contactId", mdlwrs.contactIdParamValidation, ctrl.updateContact);
+router.put(
+  "/:contactId",
+  mdlwrsUsers.auth,
+  mdlwrs.contactIdParamValidation,
+  ctrl.updateContact
+);
 
 router.patch(
   "/:contactId",
+  mdlwrsUsers.auth,
   mdlwrs.objIsEmptyValid,
   mdlwrs.updateStatusContactValid,
   mdlwrs.contactIdParamValidation,
@@ -22,6 +38,7 @@ router.patch(
 
 router.delete(
   "/:contactId",
+  mdlwrsUsers.auth,
   mdlwrs.contactIdParamValidation,
   ctrl.deleteContact
 );
