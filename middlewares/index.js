@@ -1,11 +1,4 @@
-const contactIdParamValidation = require("./contactParamValidation");
-const addContactValidation = require("./addContactValid");
-const objIsEmptyValid = require("./objIsEmptyValid");
-const updateStatusContactValid = require("./updateStatusContactValid");
+const register = require("./users");
+const contacts = require("./contacts");
 
-module.exports = {
-  contactIdParamValidation,
-  addContactValidation,
-  objIsEmptyValid,
-  updateStatusContactValid,
-};
+module.exports = { register, contacts };

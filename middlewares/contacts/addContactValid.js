@@ -1,5 +1,5 @@
-const { addSchema } = require("../schemas/contacts");
-const { HttpError } = require("../helpers");
+const { addSchema } = require("../../schemas/contacts");
+const { HttpError } = require("../../helpers");
 
 const addContactValidation = (req, res, next) => {
   const { error } = addSchema.validate(req.body);

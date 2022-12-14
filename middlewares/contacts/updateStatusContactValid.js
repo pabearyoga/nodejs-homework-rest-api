@@ -1,5 +1,5 @@
-const { updateStatusContactSchema } = require("../schemas/contacts");
-const { HttpError } = require("../helpers");
+const { updateStatusContactSchema } = require("../../schemas/contacts");
+const { HttpError } = require("../../helpers");
 
 const updateStatusContactValid = (req, res, next) => {
   const { error } = updateStatusContactSchema.validate(req.body);
