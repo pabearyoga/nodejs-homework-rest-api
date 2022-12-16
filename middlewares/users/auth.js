@@ -1,4 +1,3 @@
-// const { Users } = require("../../models");
 const { HttpError } = require("../../helpers");
 const jwt = require("jsonwebtoken");
 const { User } = require("../../models");

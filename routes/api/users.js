@@ -18,13 +18,4 @@ router.patch(
   ctrl.updateSubscriptionUser
 );
 
-// router.patch(
-//   "/:contactId",
-//   mdlwrsUsers.auth, !
-//   mdlwrs.objIsEmptyValid, !
-//   mdlwrs.updateStatusContactValid,
-//   mdlwrs.contactIdParamValidation, !
-//   ctrl.updateStatusContact
-// );
-
 module.exports = router;
