@@ -1,20 +1,23 @@
 const express = require("express");
 const { register: ctrl } = require("../../controllers/");
-const { register: mdlwrs } = require("../../middlewares");
-const { contacts: mdlwrsContacts } = require("../../middlewares");
+const middlewares = require("../../middlewares");
+const schema = require("../../schemas/users");
 
 const router = express.Router();
 
-router.post("/register", mdlwrs.registerValidation, ctrl.register);
-router.get("/login", mdlwrs.loginValidation, ctrl.login);
-router.post("/logout", mdlwrs.auth, ctrl.logout);
-router.get("/current", mdlwrs.auth, ctrl.getCurrent);
+router.post(
+  "/register",
+  middlewares.validation(schema.registerSchema),
+  ctrl.register
+);
+router.get("/login", middlewares.validation(schema.loginSchema), ctrl.login);
+router.post("/logout", middlewares.auth, ctrl.logout);
+router.get("/current", middlewares.auth, ctrl.getCurrent);
 router.patch(
   "/",
-  mdlwrs.auth,
-  mdlwrsContacts.objIsEmptyValid,
-  mdlwrs.updateSubscriptionUserValid,
-
+  middlewares.auth,
+  middlewares.objIsEmptyValid,
+  middlewares.validation(schema.updateSubscriptionUserSchema),
   ctrl.updateSubscriptionUser
 );
 

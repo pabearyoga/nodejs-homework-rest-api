@@ -1,4 +1,11 @@
-const register = require("./users");
-const contacts = require("./contacts");
+const validation = require("./validation");
+const auth = require("./auth");
+const contactIdValidation = require("./contactIdValidation");
+const objIsEmptyValid = require("./objIsEmptyValid");
 
-module.exports = { register, contacts };
+module.exports = {
+  validation,
+  auth,
+  contactIdValidation,
+  objIsEmptyValid,
+};
