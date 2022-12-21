@@ -5,32 +5,16 @@ const schema = require("../../schemas/users");
 
 const router = express.Router();
 
-router.get("/", middlewares.auth, ctrl.getAll);
+router.get("/", ctrl.getAll);
 
-router.get(
-  "/:contactId",
-  middlewares.auth,
-  middlewares.contactIdValidation,
-  ctrl.getById
-);
+router.get("/:contactId", middlewares.contactIdValidation, ctrl.getById);
 
-router.post(
-  "/",
-  middlewares.auth,
-  middlewares.validation(schema.addSchema),
-  ctrl.addContact
-);
+router.post("/", middlewares.validation(schema.addSchema), ctrl.addContact);
 
-router.put(
-  "/:contactId",
-  middlewares.auth,
-  middlewares.contactIdValidation,
-  ctrl.updateContact
-);
+router.put("/:contactId", middlewares.contactIdValidation, ctrl.updateContact);
 
 router.patch(
   "/:contactId",
-  middlewares.auth,
   middlewares.objIsEmptyValid,
   middlewares.validation(schema.updateStatusContactSchema),
   middlewares.contactIdValidation,
@@ -39,7 +23,6 @@ router.patch(
 
 router.delete(
   "/:contactId",
-  middlewares.auth,
   middlewares.contactIdValidation,
   ctrl.deleteContact
 );
