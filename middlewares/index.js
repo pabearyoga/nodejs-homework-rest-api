@@ -1,11 +1,11 @@
-const contactIdParamValidation = require("./contactParamValidation");
-const addContactValidation = require("./addContactValid");
+const validation = require("./validation");
+const auth = require("./auth");
+const contactIdValidation = require("./contactIdValidation");
 const objIsEmptyValid = require("./objIsEmptyValid");
-const updateStatusContactValid = require("./updateStatusContactValid");
 
 module.exports = {
-  contactIdParamValidation,
-  addContactValidation,
+  validation,
+  auth,
+  contactIdValidation,
   objIsEmptyValid,
-  updateStatusContactValid,
 };

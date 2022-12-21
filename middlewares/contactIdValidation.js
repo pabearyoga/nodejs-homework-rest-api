@@ -1,4 +1,4 @@
-const contactIdParamValidation = (req, res, next) => {
+const contactIdValidation = (req, res, next) => {
   const { contactId } = req.params;
 
   if (!String(contactId)) {
@@ -10,4 +10,4 @@ const contactIdParamValidation = (req, res, next) => {
   next();
 };
 
-module.exports = contactIdParamValidation;
+module.exports = contactIdValidation;

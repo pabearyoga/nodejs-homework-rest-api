@@ -1,10 +1,15 @@
-const Contact = require("../../models/contact");
+const { Contact } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const getById = async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    const result = await Contact.findOne({ _id: contactId });
+    const { _id } = req.user;
+
+    const result = await Contact.findOne({
+      _id: contactId,
+      owner: _id,
+    }).populate("owner", "_id email subscription");
     if (!result) {
       throw HttpError(404, "Not found");
     }

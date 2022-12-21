@@ -1,4 +1,4 @@
-const Contact = require("../../models/contact");
+const { Contact } = require("../../models");
 const { HttpError } = require("../../helpers");
 const { updateSchema } = require("../../schemas/contacts");
 
@@ -8,9 +8,10 @@ const updateContact = async (req, res, next) => {
     if (error) {
       throw HttpError(400, error.message);
     }
+    const { _id } = req.user;
     const { contactId } = req.params;
     const result = await Contact.findByIdAndUpdate(
-      { _id: contactId },
+      { owner: _id, _id: contactId },
       req.body,
       {
         new: true,
