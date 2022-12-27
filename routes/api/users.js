@@ -20,5 +20,11 @@ router.patch(
   middlewares.validation(schema.updateSubscriptionUserSchema),
   ctrl.updateSubscriptionUser
 );
+router.patch(
+  "/avatars",
+  middlewares.auth,
+  middlewares.upload.single("avatar"),
+  ctrl.updateAvatar
+);
 
 module.exports = router;
