@@ -10,9 +10,21 @@ router.post(
   middlewares.validation(schema.registerSchema),
   ctrl.register
 );
+
+router.get("/verify/:verificationToken", ctrl.verifyEmail);
+
+router.post(
+  "/verify",
+  middlewares.validation(schema.verifyEmailSchema),
+  ctrl.resendVerifyEmail
+);
+
 router.get("/login", middlewares.validation(schema.loginSchema), ctrl.login);
+
 router.post("/logout", middlewares.auth, ctrl.logout);
+
 router.get("/current", middlewares.auth, ctrl.getCurrent);
+
 router.patch(
   "/",
   middlewares.auth,
@@ -20,6 +32,7 @@ router.patch(
   middlewares.validation(schema.updateSubscriptionUserSchema),
   ctrl.updateSubscriptionUser
 );
+
 router.patch(
   "/avatars",
   middlewares.auth,

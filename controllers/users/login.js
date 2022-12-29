@@ -8,12 +8,17 @@ const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
+
     if (!user) {
       throw HttpError(401, `Email or password is wrong`);
     }
     const userPassword = bcrypt.compareSync(password, user.password);
     if (!userPassword) {
       throw HttpError(401, `Email or password is wrong`);
+    }
+
+    if (!user.verify) {
+      throw HttpError(403, `Email not verify`);
     }
 
     const { subscription } = user;
