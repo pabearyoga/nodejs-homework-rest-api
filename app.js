@@ -6,6 +6,7 @@ const middlewares = require("./middlewares");
 
 const usersRout = require("./routes/api/users");
 const contactsRouter = require("./routes/api/contacts");
+const noticesRouter = require("./routes/api/notices");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.static("public"));
 
 app.use("/api/users", usersRout);
 app.use("/api/contacts", middlewares.auth, contactsRouter);
+app.use("/api/notices", noticesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
