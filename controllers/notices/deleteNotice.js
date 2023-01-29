@@ -5,7 +5,6 @@ const deleteNotice = async (req, res, next) => {
   try {
     const { noticeId } = req.params;
     const { _id } = req.user;
-    console.log(_id);
     const result = await Notice.findByIdAndRemove({
       _id: noticeId,
       owner: _id,
