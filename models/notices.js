@@ -29,6 +29,11 @@ const noticesSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  category: {
+    type: String,
+    enum: ["sell", "lost-found", "for-free"],
+    required: [true, "Set category for notices"],
+  },
   owner: {
     type: SchemaTypes.ObjectId,
     ref: "users",

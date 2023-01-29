@@ -9,6 +9,7 @@ const addSchema = Joi.object({
   comments: Joi.string().required(),
   price: Joi.number().required(),
   favorite: Joi.boolean(),
+  category: Joi.string().valid("sell", "lost-found", "for-free").required(),
 });
 
 const updateStatusNoticeSchema = Joi.object({
