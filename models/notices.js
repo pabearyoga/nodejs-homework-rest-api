@@ -24,6 +24,7 @@ const noticesSchema = new Schema({
   price: {
     type: Number,
     required: [true, "Set price for notices"],
+    default: 0,
   },
   favorite: {
     type: Boolean,
@@ -34,6 +35,15 @@ const noticesSchema = new Schema({
     enum: ["sell", "lost-found", "for-free"],
     required: [true, "Set category for notices"],
   },
+  sex: {
+    type: String,
+    enum: ["male", "female"],
+  },
+  petsAvatarURL: {
+    type: String,
+    // required: true,
+  },
+
   owner: {
     type: SchemaTypes.ObjectId,
     ref: "users",
