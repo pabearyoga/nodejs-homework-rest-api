@@ -35,6 +35,6 @@ const noticesSchema = new Schema({
   },
 });
 
-const Notic = model("notic", noticesSchema);
+const Notice = model("notice", noticesSchema);
 
-module.exports = Notic;
+module.exports = Notice;

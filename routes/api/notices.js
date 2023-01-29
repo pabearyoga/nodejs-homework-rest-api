@@ -5,7 +5,7 @@ const schema = require("../../schemas/notices");
 
 const router = express.Router();
 
-router.get("/:categoryName", ctrl.getCategory);
+router.get("/", ctrl.getCategory);
 router.get("/:noticeId", mdw.noticeIdValidation, ctrl.getById);
 router.patch(
   "/:noticeId",
