@@ -1,15 +1,19 @@
 const getAll = require("./getAll");
-// const getById = require("./getById");
-// const addContact = require("./addContact");
+const getById = require("./getById");
+const getFavorite = require("./getFavorite");
+const addNotice = require("./addNotice");
 // const updateContact = require("./updateContact");
-// const deleteContact = require("./deleteContact");
-// const updateStatusContact = require("./updateStatusContact");
+const deleteNotice = require("./deleteNotice");
+const updateStatusNotice = require("./updateStatusNotice");
+const getCategory = require("./getCategory");
 
 module.exports = {
-  getAll,
-  //   getById,
-  //   addContact,
+  getCategory,
+  getById,
+  getFavorite,
+  addNotice,
   //   updateContact,
-  //   deleteContact,
-  //   updateStatusContact,
+  deleteNotice,
+  updateStatusNotice,
+  getAll,
 };

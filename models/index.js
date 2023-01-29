@@ -1,5 +1,5 @@
 const Contact = require("./contact");
 const User = require("./user");
-const Notices = require("./notices");
+const Notice = require("./notices");
 
-module.exports = { Contact, User, Notices };
+module.exports = { Contact, User, Notice };

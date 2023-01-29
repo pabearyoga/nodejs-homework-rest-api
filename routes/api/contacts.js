@@ -1,7 +1,7 @@
 const express = require("express");
 const { contacts: ctrl } = require("../../controllers/");
 const middlewares = require("../../middlewares");
-const schema = require("../../schemas/users");
+const schema = require("../../schemas/contacts");
 
 const router = express.Router();
 

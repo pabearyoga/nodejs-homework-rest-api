@@ -1,9 +1,9 @@
 // const { Contact } = require("../../models");
-const { Notices } = require("../../models");
+const { Notice } = require("../../models");
 
 const getAll = async (req, res, next) => {
   try {
-    console.log(Notices);
+    console.log(Notice);
     // const { _id } = req.user;
     // const {
     //   page = 1,
