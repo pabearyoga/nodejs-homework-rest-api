@@ -9,6 +9,7 @@ router.get("/", ctrl.getCategory);
 router.get("/:noticeId", mdw.noticeIdValidation, ctrl.getById); //
 router.patch(
   "/:noticeId",
+  mdw.auth,
   mdw.objIsEmptyValid,
   mdw.validation(schema.updateStatusNoticeSchema),
   mdw.noticeIdValidation,
@@ -22,6 +23,6 @@ router.delete(
   mdw.auth,
   mdw.noticeIdValidation,
   ctrl.deleteNotice
-);
+); //
 
 module.exports = router;
