@@ -16,7 +16,6 @@ router.patch(
   ctrl.updateStatusNotice
 ); //
 router.post("/", mdw.auth, mdw.validation(schema.addSchema), ctrl.addNotice); //
-// router.post("/", ctrl.addNotice); //
 router.get("/", mdw.auth, ctrl.getFavoriteOwn);
 router.delete(
   "/:noticeId",
