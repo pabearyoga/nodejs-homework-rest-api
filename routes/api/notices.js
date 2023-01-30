@@ -5,7 +5,7 @@ const schema = require("../../schemas/notices");
 
 const router = express.Router();
 
-router.get("/", ctrl.getCategory);
+router.get("/:categoryName", ctrl.getCategory); //
 router.get("/:noticeId", mdw.noticeIdValidation, ctrl.getById); //
 router.patch(
   "/:noticeId",
@@ -14,10 +14,10 @@ router.patch(
   mdw.validation(schema.updateStatusNoticeSchema),
   mdw.noticeIdValidation,
   ctrl.updateStatusNotice
-);
-router.get("/favorite", mdw.auth, ctrl.getFavorite);
+); //
 router.post("/", mdw.auth, mdw.validation(schema.addSchema), ctrl.addNotice); //
-router.get("/", mdw.auth, ctrl.getAll);
+// router.post("/", ctrl.addNotice); //
+router.get("/", mdw.auth, ctrl.getFavoriteOwn);
 router.delete(
   "/:noticeId",
   mdw.auth,
