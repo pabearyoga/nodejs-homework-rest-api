@@ -4,7 +4,6 @@ const getById = require("./getById");
 const addNotice = require("./addNotice");
 const deleteNotice = require("./deleteNotice");
 const updateStatusNotice = require("./updateStatusNotice");
-const getSearchTitle = require("./getSearchTitle");
 
 module.exports = {
   getCategory,
@@ -13,5 +12,4 @@ module.exports = {
   deleteNotice,
   updateStatusNotice,
   getOwn,
-  getSearchTitle,
 };

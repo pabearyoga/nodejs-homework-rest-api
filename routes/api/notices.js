@@ -29,6 +29,5 @@ router.delete(
   mdw.noticeIdValidation,
   ctrl.deleteNotice
 ); //
-router.get("/search/:searchWords", ctrl.getSearchTitle);
 
 module.exports = router;
