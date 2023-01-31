@@ -1,9 +1,10 @@
-const getFavoriteOwn = require("./getFavoriteOwn");
+const getOwn = require("./getOwn");
 const getCategory = require("./getCategory");
 const getById = require("./getById");
 const addNotice = require("./addNotice");
 const deleteNotice = require("./deleteNotice");
 const updateStatusNotice = require("./updateStatusNotice");
+const getSearchTitle = require("./getSearchTitle");
 
 module.exports = {
   getCategory,
@@ -11,5 +12,6 @@ module.exports = {
   addNotice,
   deleteNotice,
   updateStatusNotice,
-  getFavoriteOwn,
+  getOwn,
+  getSearchTitle,
 };

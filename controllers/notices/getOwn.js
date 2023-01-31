@@ -1,6 +1,6 @@
 const { Notice } = require("../../models");
 
-const getFavoriteOwn = async (req, res, next) => {
+const getOwn = async (req, res, next) => {
   try {
     const { _id } = req.user;
     const {
@@ -21,4 +21,4 @@ const getFavoriteOwn = async (req, res, next) => {
   }
 };
 
-module.exports = getFavoriteOwn;
+module.exports = getOwn;

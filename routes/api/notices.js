@@ -15,13 +15,20 @@ router.patch(
   mdw.noticeIdValidation,
   ctrl.updateStatusNotice
 ); //
-router.post("/", mdw.auth, mdw.validation(schema.addSchema), ctrl.addNotice); //
-router.get("/", mdw.auth, ctrl.getFavoriteOwn);
+router.post(
+  "/",
+  mdw.auth,
+  mdw.validation(schema.addSchema),
+  mdw.upload.single("avatar"),
+  ctrl.addNotice
+); //
+router.get("/", mdw.auth, ctrl.getOwn);
 router.delete(
   "/:noticeId",
   mdw.auth,
   mdw.noticeIdValidation,
   ctrl.deleteNotice
 ); //
+router.get("/search/:searchWords", ctrl.getSearchTitle);
 
 module.exports = router;
