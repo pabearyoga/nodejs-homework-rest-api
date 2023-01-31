@@ -42,6 +42,6 @@ router.patch(
 
 router.patch("/favorite/:noticeId", middlewares.auth, ctrl.updateFavorite);
 router.get("/favorite", middlewares.auth, ctrl.getFavorite);
-router.delete("/favorite", middlewares.auth, ctrl.deleteFavorite);
+router.delete("/favorite/:noticeId", middlewares.auth, ctrl.deleteFavorite);
 
 module.exports = router;
