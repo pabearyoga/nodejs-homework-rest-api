@@ -6,6 +6,12 @@ const registerSchema = Joi.object({
   subscription: Joi.string(),
 });
 
+const updateSchema = Joi.object({
+  email: Joi.string(),
+  password: Joi.string().min(6),
+  subscription: Joi.string(),
+});
+
 const verifyEmailSchema = Joi.object({
   email: Joi.string().required(),
 });
@@ -24,4 +30,5 @@ module.exports = {
   loginSchema,
   updateSubscriptionUserSchema,
   verifyEmailSchema,
+  updateSchema,
 };

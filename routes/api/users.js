@@ -40,7 +40,7 @@ router.patch(
   ctrl.updateAvatar
 );
 
-router.patch("/favorite", middlewares.auth, ctrl.updateFavorite);
+router.patch("/favorite/:noticeId", middlewares.auth, ctrl.updateFavorite);
 router.get("/favorite", middlewares.auth, ctrl.getFavorite);
 router.delete("/favorite", middlewares.auth, ctrl.deleteFavorite);
 
