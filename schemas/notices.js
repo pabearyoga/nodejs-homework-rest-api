@@ -3,7 +3,7 @@ const Joi = require("joi");
 const addSchema = Joi.object({
   title: Joi.string().min(2).max(48).required(),
   name: Joi.string().min(2).max(16).required(),
-  birthday: Joi.date().messages({ valid: "format MM-DD-YYYY" }),
+  birthdate: Joi.date().messages({ valid: "format MM-DD-YYYY" }),
   breed: Joi.string().min(2).max(24),
   location: Joi.string(),
   comments: Joi.string()
