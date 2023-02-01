@@ -8,7 +8,7 @@ const noticesSchema = new Schema({
   name: {
     type: String,
   },
-  birthdate: {
+  birthday: {
     type: Date,
   },
   bread: {

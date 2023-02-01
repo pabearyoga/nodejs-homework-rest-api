@@ -5,44 +5,21 @@ const fs = require("fs/promises");
 
 const avatarsDir = path.join(__dirname, "../../", "public", "avatars");
 
-const updateAvatar = async (req, res, next) => {
-  const { _id: id } = req.user;
-  if (!req.file) {
-    const tempUpload =
-      "../../public/avatars/63ac8476ea0bf78ea4f94a8e_no-profile-pic-icon-11.jpg";
-    const imageName = "63ac8476ea0bf78ea4f94a8e_no-profile-pic-icon-11";
-
-    try {
-      const resultUpload = path.join(avatarsDir, imageName);
-      await fs.rename(tempUpload, resultUpload);
-      const avatarURL = path.join(
-        __dirname,
-        "../../",
-        "public",
-        "avatars",
-        imageName
-      );
-      await User.findByIdAndUpdate(req.user._id, { avatarURL });
-      res.json({ avatarURL });
-    } catch (error) {
-      next(error);
-    }
-    return;
-  }
-
+const updateAvatar = async (req, res) => {
   const { path: tempUpload, originalname } = req.file;
+  const { _id: id } = req.user;
   const imageName = `${id}_${originalname}`;
-
+  // const { file } = req;
   try {
+    // await avatarImgOptimization({ file, size: 250 });
     const resultUpload = path.join(avatarsDir, imageName);
     await fs.rename(tempUpload, resultUpload);
-    const avatarURL = path.join("public", "avatars", imageName);
-    await User.findByIdAndUpdate(req.user._id, { avatarURL });
-    res.json({ avatarURL });
+    const avatarURl = path.join("public", "avatars", imageName);
+    await User.findByIdAndUpdate(req.user._id, { avatarURl }); // or create
+    res.json({ avatarURl });
   } catch (error) {
     await fs.unlink(tempUpload);
     throw error;
   }
 };
-
 module.exports = updateAvatar;
