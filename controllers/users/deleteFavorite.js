@@ -11,11 +11,11 @@ const deleteFavorite = async (req, res, next) => {
       _id: _id,
     });
 
-    const detetedIdIndex = favoriteNotices.findIndex(
+    const deletedIdIndex = favoriteNotices.findIndex(
       (id) => id === `${noticeId}`
     ); // index
 
-    favoriteNotices.splice(detetedIdIndex, 1);
+    favoriteNotices.splice(deletedIdIndex, 1);
 
     const result = await User.findByIdAndUpdate(
       { _id: _id },

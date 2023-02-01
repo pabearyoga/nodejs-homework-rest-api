@@ -5,8 +5,34 @@ const fs = require("fs/promises");
 const avatarsDir = path.join(__dirname, "../../", "public", "avatars");
 
 const addNotice = async (req, res, next) => {
-  const { path: tempUpload, originalname } = req.file;
   const { _id: id } = req.user;
+
+  if (!req.file) {
+    const imageName = "63ac8476ea0bf78ea4f94a8e_no-profile-pic-icon-11.jpg";
+
+    try {
+      const resultUpload = path.join(avatarsDir, imageName);
+      await fs.rename(resultUpload, resultUpload);
+      const petsAvatarURL = path.join(
+        // __dirname,
+        // "../../",
+        "public",
+        "avatars",
+        imageName
+      );
+      const result = await Notice.create({
+        ...req.body,
+        petsAvatarURL,
+        owner: id,
+      });
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
+    return;
+  }
+
+  const { path: tempUpload, originalname } = req.file;
   const imageName = `${id}_${originalname}`;
 
   try {

@@ -42,3 +42,23 @@
 "category": "sell", //required
 "sex": "male"
 }
+
+//
+router.get('/', authHeaderValidation, getOwn);
+
+const getOwn = async (req, res, next) => {
+try {
+const { \_id } = req.user;
+const { page = 1, limit = 200 } = req.query;
+
+    const skip = (page - 1) * limit;
+    const result = await Notice.find({ owner: _id }, '', {
+      skip,
+      limit: Number(limit),
+    }).populate('owner', '_id');
+    res.json(result);
+
+} catch (error) {
+next(error);
+}
+};
