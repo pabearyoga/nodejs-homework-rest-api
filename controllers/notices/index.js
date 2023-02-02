@@ -1,4 +1,4 @@
-const getOwn = require("./getOwn");
+const getAll = require("./getAll");
 const getCategory = require("./getCategory");
 const getById = require("./getById");
 const addNotice = require("./addNotice");
@@ -11,5 +11,5 @@ module.exports = {
   addNotice,
   deleteNotice,
   updateStatusNotice,
-  getOwn,
+  getAll,
 };

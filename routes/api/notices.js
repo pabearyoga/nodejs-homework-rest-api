@@ -22,7 +22,7 @@ router.post(
   mdw.upload.single("avatar"),
   ctrl.addNotice
 ); //
-router.get("/", mdw.auth, ctrl.getOwn);
+router.get("/", mdw.auth, ctrl.getAll);
 router.delete(
   "/:noticeId",
   mdw.auth,
