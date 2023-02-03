@@ -39,6 +39,7 @@ router.patch(
   middlewares.upload.single("avatar"),
   ctrl.updateAvatar
 );
+router.delete("/avatars", middlewares.auth, ctrl.deleteAvatars);
 
 router.patch("/favorite/:noticeId", middlewares.auth, ctrl.updateFavorite);
 router.get("/favorite", middlewares.auth, ctrl.getFavorite);

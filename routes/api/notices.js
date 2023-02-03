@@ -5,6 +5,7 @@ const schema = require("../../schemas/notices");
 
 const router = express.Router();
 
+router.get("/", mdw.auth, ctrl.getAll);
 router.get("/:categoryName", ctrl.getCategory); //
 router.get("/:noticeId", mdw.noticeIdValidation, ctrl.getById); //
 router.patch(
@@ -22,7 +23,6 @@ router.post(
   mdw.upload.single("avatar"),
   ctrl.addNotice
 ); //
-router.get("/", mdw.auth, ctrl.getAll);
 router.delete(
   "/:noticeId",
   mdw.auth,
